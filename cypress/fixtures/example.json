@@ -1,0 +1,9 @@
+{
+  "name": "Bob",
+  "gender": "Male",
+  "age": "50",
+  "productName":["iphone X","Blackberry","Samsung Note 8","Nokia Edge"],
+  "district":"Dhaka",
+  "area":"Aftabnagar",
+  "product":"Chicken"
+}
