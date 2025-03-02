@@ -1,7 +1,15 @@
 # CypressProject  
 
 ## 📌 Overview  
-This project uses **Cypress** for automation testing with **BDD (Cucumber)** and generates reports using **Mochawesome**. It supports multiple projects like **Shwapno, MeenaBazar, and API Testing**.  
+This project uses **Cypress** for automation testing with **BDD (Cucumber)** and generates reports using **Mochawesome**. It supports multiple projects like **Shwapno, MeenaBazar, and API Testing**.
+
+## 🛠 Prerequisites  
+Ensure the following software and dependencies are installed before proceeding:
+- **VS Code** (1.95 or higher)
+- **Git** (latest version recommended)
+- **Node.js** (LTS version recommended)
+- **Cypress** (latest version)
+- **Mochawesome Reporter**
 
 ## 🛠 Installation  
 
@@ -20,16 +28,12 @@ This project uses **Cypress** for automation testing with **BDD (Cucumber)** and
 
 ### Run all projects  
 ```sh
-$env:CYPRESS_PROJECT_NAME=$null; npx cypress run
-```
-For Mac/Linux:  
-```sh
-CYPRESS_PROJECT_NAME=null npx cypress run
+npx cypress run
 ```
 
 ### Run specific project (e.g., MeenaBazar)  
 ```sh
-$env:CYPRESS_PROJECT_NAME=MeenaBazar; npx cypress run
+npx cypress run --env PROJECT_NAME=MeenaBazar
 ```
 
 ### Run Cypress in GUI mode  
@@ -37,10 +41,11 @@ $env:CYPRESS_PROJECT_NAME=MeenaBazar; npx cypress run
 npx cypress open
 ```
 
-## 🧪 BDD Cucumber Setup  
-- Feature files (`.feature`) are inside each project folder (`BDD`, `BDDA`, `BDDM`).  
-- Step definitions (`.js`) are inside `StepDefinitions` folder in each project.  
-- Page objects are stored inside `PageObjects` in each project folder.  
+## 🧪 Framework Architecture  
+- **Feature files (`.feature`)** are inside each project folder (`Shwapno`, `MeenaBazar`, `API Testing`).  
+- **Step definitions (`.js`)** are inside `StepDefinitions` folder in each project.  
+- **Page objects** are stored inside `PageObjects` in each project folder.  
+- **Environment variables** should be configured in a `.env` file instead of passing directly in CLI.
 
 ## 📊 Generating Reports with Mochawesome  
 
@@ -49,33 +54,13 @@ npx cypress open
    npx cypress run --reporter mochawesome
    ```
 2. **View the report:**  
-   Open the `cypress/reports/mochawesome.html` file in your browser.
+   ```sh
+   npx mochawesome-merge --reportDir cypress/reports > mochawesome.json
+   npx marge mochawesome.json
+   ```
+   The generated report will be available in `cypress/reports/mochawesome.html`.
 
-## 📂 Project Structure  
-```
-CypressProjects/
-│── cypress/
-│   ├── integration/
-│   │   ├── examples/
-│   │   │   ├── BDD/              # Project: Shwapno
-│   │   │   │   ├── FeatureFiles/   # BDD feature files
-│   │   │   │   ├── StepDefinitions/ # Step definitions
-│   │   │   │   ├── PageObjects/     # Page Object files
-│   │   │   ├── BDDA/             # Project: API Testing
-│   │   │   │   ├── FeatureFiles/
-│   │   │   │   ├── StepDefinitions/
-│   │   │   │   
-│   │   │   ├── BDDM/             # Project: MeenaBazar
-│   │   │   │   ├── FeatureFiles/
-│   │   │   │   ├── StepDefinitions/
-│   │   │   │   ├── PageObjects/
-│   ├── reports/                   # Mochawesome reports
-│── package.json
-│── cypress.config.js
-│── README.md
-```
-
-## 📌 Dependencies  
+## 🛠 Dependencies  
 Ensure these dependencies are installed in `package.json`:  
 ```json
 "dependencies": {
@@ -86,5 +71,6 @@ Ensure these dependencies are installed in `package.json`:
 }
 ```
 
-## 📌 License  
+## 📚 License  
 This project is open-source and available under the [MIT License](LICENSE).
+
